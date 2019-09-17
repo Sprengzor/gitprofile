@@ -7,24 +7,32 @@ export default class Form extends Component {
   state = {
     repos: [],
     profile: [],
-    username: "Sprengzor"
+    username: ""
   };
 
-  async componentDidMount() {
-    const profResponse = await fetch(
-      `https://api.github.com/users/${this.state.username}`
-    );
-    const profile = await profResponse.json();
-    const reposResponse = await fetch(
-      `https://api.github.com/users/${this.state.username}/repos`
-    );
-    const repos = await reposResponse.json();
-    this.setState({ repos, profile });
+  inputChangeHandler = (e) => {
+    console.log(e.target.value, this.state.username)
+    const username = e.target.value;
+    this.setState({username: username});
   }
 
-  inputChangeHandler = (e) => {
-    const username = e.target.value;
-    this.setState = ({username});
+  fetchGitInfoHandler = (e) => {
+    e.preventDefault();
+    let profile, repos;
+    fetch(
+      `https://api.github.com/users/${this.state.username}`
+    ).then(profResponse => profResponse.json()).then(jsonProfResponse => {
+      profile = jsonProfResponse;
+      return fetch(
+        `https://api.github.com/users/${this.state.username}/repos`
+      );
+    }).then(repos => repos.json())
+    .then(reposResponse => {
+      repos = reposResponse;
+      this.setState({ repos, profile });
+    })
+    .catch(e => console.log(e))
+
   }
 
   render() {
@@ -50,9 +58,9 @@ export default class Form extends Component {
               name="username"
               placeholder="GitHub Username ..."
               value={this.state.username}
-              onChange = {this.inputChangeHandler}
+              onChange = {(e) => this.inputChangeHandler(e)}
             />
-            <button type="submit">
+            <button onClick={this.fetchGitInfoHandler}>
               <i className="fa fa-search"></i>
             </button>
           </form>
@@ -75,7 +83,7 @@ export default class Form extends Component {
           <div id="reposContent">
             <h1>Repositories</h1>
             <ul>
-              {repos.map(repo => {
+              {repos.length > 0 ? repos.map(repo => {
                 return (
                   <li key={repo.id}>
                     <strong>{repo.name}</strong>
@@ -84,7 +92,7 @@ export default class Form extends Component {
                     </a>
                   </li>
                 );
-              })}
+              }) : null}
             </ul>
           </div>
         </div>
