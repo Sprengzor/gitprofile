@@ -1,0 +1,81 @@
+#navbar {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #549bdd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  text-shadow: 2px 2px 2px #000000;
+  z-index: 90;
+  -webkit-box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
+}
+#navbar img{
+  background-color: #549bdd;
+  width: 60px;
+  height: 60px;
+}
+
+#navbar input{
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid black;
+  float: left;
+  width: 80%;
+  background: #a5abb1;
+  color: white;
+  -webkit-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+#navbar button{
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #a5abb1;
+  color: white;
+  font-size: 17px;
+  text-shadow: 2px 2px 2px #000000;
+  border: 1px solid black;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+#navbar button:hover {
+  background: #549bdd;
+}
+
+#mainContent {
+  height: 800px;
+  width: 800px;
+  float: left;
+  margin: 50px auto;
+  position: absolute;
+  background: rgba(100, 100, 100, 0.25);
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 90;
+}
+
+#profContent {
+  width: 500px;
+}
+
+#profContent img {
+  height: 300px;
+  width: 300px;
+}
